@@ -70,8 +70,6 @@ Bakabet est un site de paris en ligne.
 
 - Système de notification pour informer les utilisateurs des événements importants (pari validé, résultat d'un événement, etc.).
 
-
-
 ## 3. Aspects techniques
 
 ### 3.1. Technologies
