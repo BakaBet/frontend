@@ -95,3 +95,33 @@ Bakabet est un site de paris en ligne.
 - Serveur web : [Insérer]
 
 - Back : [Insérer]
+
+# Cas d'utilisation
+## Parier sur un évènement sportif
+- L'utilisateur parcourt la liste des événements sportifs disponibles sur la plateforme.
+- L'utilisateur sélectionne l'événement sportif qui l'intéresse.
+- L'utilisateur consulte les différentes cotes disponibles pour l'événement sportif sélectionné.
+- L'utilisateur sélectionne le pari qu'il souhaite placer et indique le montant de sa mise.
+- Le système vérifie le solde de l'utilisateur et confirme le pari.
+- L'utilisateur consulte la liste de ses paris en cours et suivis.
+- En cas de victoire du pari, l'utilisateur reçoit ses gains sur son compte.
+
+## Parier sur un événement de la vie
+- L'utilisateur Proposant définit les termes du pari, la cote et le montant de la mise minimale.
+- L'utilisateur Proposant consulte l'état de son pari (en attente, en cours, terminé).
+
+- L'utilisateur Parieur parcourt la liste des paris sur la vie disponibles sur la plateforme.
+- L'utilisateur Parieur consulte les termes du pari, la cote et le montant de la mise.
+- L'utilisateur Parieur peut négocier la cote du pari avec l'utilisateur Proposant avant de le rejoindre.
+- L'utilisateur Parieur place une mise sur le pari et rejoint le pari.
+- L'utilisateur Parieur consulte l'évolution du pari (en attente, en cours, terminé).
+
+## Ouverture d'un compte BakaBet
+- L'utilisateur s'inscrit en remplissant un formulaire d'inscription complet (nom, prénom, pseudo, email, mot de passe) et valide.
+- L'utilisateur reçoit 100 BakaCoins à l'inscription
+
+## Gérer son compte BakaBet
+- L'utilisateur saisit ses identifiants de connexion (email et mot de passe).
+- L'utilisateur consulte son solde en BakaCoins.
+- L'utilisateur consulte l'historique de ses paris.
+- L'utilisateur peut modifier ses informations personnelles (nom, prénom, email, mot de passe, etc.).
