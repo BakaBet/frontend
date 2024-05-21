@@ -1,0 +1,65 @@
+[
+    {
+      "Id": "m1",
+      "SportKey": "soccer",
+      "CommenceTime": "2024-05-26T10:00:00Z",
+      "HomeTeam": "Liverpool",
+      "AwayTeam": "Chelsea",
+      "Outcomes": [
+        {
+          "Name": "Home Win",
+          "Price": 1.5
+        },
+        {
+          "Name": "Draw",
+          "Price": 3.2
+        },
+        {
+          "Name": "Away Win",
+          "Price": 2.1
+        }
+      ]
+    },
+    {
+      "Id": "m2",
+      "SportKey": "basketball",
+      "CommenceTime": "2024-05-27T15:00:00Z",
+      "HomeTeam": "Golden State Warriors",
+      "AwayTeam": "Boston Celtics",
+      "Outcomes": [
+        {
+          "Name": "Draw",
+          "Price": 3.2
+        },
+        {
+          "Name": "Away Win",
+          "Price": 2.1
+        },
+        {
+          "Name": "Home Win",
+          "Price": 1.5
+        }
+      ]
+    },
+    {
+      "Id": "m3",
+      "SportKey": "tennis",
+      "CommenceTime": "2024-05-28T12:00:00Z",
+      "HomeTeam": "Novak Djokovic",
+      "AwayTeam": "Rafael Nadal",
+      "Outcomes": [
+        {
+          "Name": "Away Win",
+          "Price": 2.1
+        },
+        {
+          "Name": "Home Win",
+          "Price": 1.5
+        },
+        {
+          "Name": "Draw",
+          "Price": 3.2
+        }
+      ]
+    }
+  ]

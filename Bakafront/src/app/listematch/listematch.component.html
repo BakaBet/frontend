@@ -1,32 +1,50 @@
 <div class="flex justify-center items-center my-10">
-    <div class="max-w-full mx-auto">
+    <div class="w-3/4 mx-auto">
       <ng-container *ngFor="let match of matches">
         <div class="bg-gray-200 p-6 rounded-lg mb-6 w-full">
-          <div class="flex items-center justify-between mb-6">
+          <div class="flex justify-between">
             <div class="flex items-center space-x-6">
-              <i class="fa fa-users mr-4 text-gray-500"></i>
+              <i class="fa fa-house mr-4 text-6xl text-xl text-gray-500"></i>
               <div>
                 <div class="font-bold text-xl">{{ match.HomeTeam }}</div>
                 <div>Cote: XX</div>
               </div>
             </div>
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded">BET</button>
-          </div>
-          
-          <div class="text-center my-6">
-            <div class="font-bold text-gray-700 mb-4 text-lg">{{ match.CommenceTime }}</div>
-            <input type="number" class="text-black w-full py-3 rounded text-center" placeholder="Montant à parier">
-          </div>
   
-          <div class="flex items-center justify-between">
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded">BET</button>
+
+  
             <div class="flex items-center space-x-6">
               <div>
                 <div class="font-bold text-xl">{{ match.AwayTeam }}</div>
                 <div>Cote: XX</div>
               </div>
-              <i class="fa fa-users ml-4 text-gray-500"></i>
+              <i class="fa fa-plane ml-4 text-6xl text-gray-500"></i>
             </div>
+          </div>
+          
+
+          <div class="text-center my-6">
+            <div class="font-bold text-gray-700 mb-4 text-lg">{{ match.CommenceTime }}</div>
+            <input type="number" class="text-black w-full py-3 rounded text-center" placeholder="Montant à parier">
+          </div>
+
+          <div class="flex justify-center items-center space-x-6">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded">Home Win</button>
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded">Draw</button>
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded">Away Win</button>
+          </div>
+
+          <div class="mt-6">
+            <div class="font-bold text-lg">Détails du match :</div>
+            <ul class="list-disc pl-8">
+              <li>Match ID: {{ match.Id }}</li>
+              <li>Sport: {{ match.SportKey }}</li>
+              <li>Date de début: {{ match.CommenceTime }}</li>
+              <li>Résultats :</li>
+              <ul class="list-disc pl-8">
+                <li *ngFor="let outcome of match.Outcomes">{{ outcome.Name }} - Prix: {{ outcome.Price }}</li>
+              </ul>
+            </ul>
           </div>
         </div>
       </ng-container>
