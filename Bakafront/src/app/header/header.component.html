@@ -1,16 +1,19 @@
-<header>
-    <div class="logo">
-      <div class="logo">
-        <a routerLink="/accueil " > 
-          <img src="assets/logo-bakabet.png" alt="Bakabet Logo">
-        </a>
-      </div>
-    </div>
-    <nav>
-      <a class="text-3xl font-bold underline" routerLink="/about-us">About Us</a>
-      <a routerLink="/login">
-        <i class="fa fa-user"></i> Login
-      </a>
-    </nav>
-  </header>
-  
+<header class="bg-gray-200 p-4 flex justify-between items-center shadow-md">
+  <div class="flex items-center space-x-4">
+    <a routerLink="/home" class="flex items-center space-x-2">
+      <img src="assets/piece-de-monnaie.png" class="w-12 h-12" alt="Bakabet Logo">
+      <span class="text-2xl font-bold">BAKABET</span>
+    </a>
+  </div>
+  <button class="md:hidden block focus:outline-none" id="menu-button">
+    <i class="fa fa-bars text-2xl"></i>
+  </button>
+  <nav class="hidden md:flex space-x-4" id="menu">
+    <a routerLink="/sportbet" class="font-bold hover:text-gray-500">Sport Bet</a>
+    <a routerLink="/lifebet" class="font-bold hover:text-gray-500">Life Bet</a>
+    <a routerLink="/about-us" class="font-bold hover:text-gray-500">About Us</a>
+    <a routerLink="/login" class="font-bold hover:text-gray-500 flex items-center">
+      <i class="fa fa-user mr-1"></i><span>Login</span>
+    </a>
+  </nav>
+</header>

@@ -15,5 +15,4 @@ import { BettingCardComponent } from './betting-card/betting-card.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Bakafront';
 }
