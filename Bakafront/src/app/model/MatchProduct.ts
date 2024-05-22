@@ -1,13 +1,13 @@
 export interface MatchProduct {
-    Id: string,
-    SportKey: string,
-    CommenceTime: string,
-    HomeTeam: string,
-    AwayTeam: string,
-    Outcomes: Outcome[];
+    id: string,
+    sportKey: string,
+    commenceTime: string,
+    homeTeam: string,
+    awayTeam: string,
+    outcomes: Outcome[];
 }
 
 export interface Outcome {
-    Name: string;
-    Price: number;
+    name: string;
+    price: number;
 }

@@ -9,11 +9,11 @@ import { environment } from './environments/environments';
   providedIn: 'root'
 })
 export class SportmatchService {
-
+  private apiUrl = 'https://localhost:7127/api/SportBets';
   constructor(private http: HttpClient) { }
 
   getMatches(): Observable<MatchProduct[]> {  
-    return this.http.get<MatchProduct[]>(environment.backendClient)
+    return this.http.get<MatchProduct[]>(this.apiUrl)
       .pipe(
         catchError(error => {
           console.error('Error fetching matches:', error);

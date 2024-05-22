@@ -6,7 +6,7 @@
             <div class="flex items-center space-x-6">
               <i class="fa fa-house mr-4 text-6xl text-gray-500"></i>
               <div>
-                <div class="font-bold text-xl">{{ match.HomeTeam }}</div>
+                <div class="font-bold text-xl">{{ match.homeTeam }}</div>
                 <div>Cote: XX</div>
               </div>
             </div>
@@ -15,7 +15,7 @@
   
             <div class="flex items-center space-x-6">
               <div>
-                <div class="font-bold text-xl">{{ match.AwayTeam }}</div>
+                <div class="font-bold text-xl">{{ match.awayTeam }}</div>
                 <div>Cote: XX</div>
               </div>
               <i class="fa fa-plane ml-4 text-6xl text-gray-500"></i>
@@ -24,7 +24,7 @@
           
 
           <div class="text-center my-6">
-            <div class="font-bold text-gray-700 mb-4 text-lg">{{ match.CommenceTime }}</div>
+            <div class="font-bold text-gray-700 mb-4 text-lg">{{ match.commenceTime }}</div>
             <input type="number" class="text-black w-full py-3 rounded text-center" placeholder="Montant à parier">
           </div>
 
@@ -37,12 +37,12 @@
           <div class="mt-6">
             <div class="font-bold text-lg">Détails du match :</div>
             <ul class="list-disc pl-8">
-              <li>Match ID: {{ match.Id }}</li>
-              <li>Sport: {{ match.SportKey }}</li>
-              <li>Date de début: {{ match.CommenceTime }}</li>
+              <li>Match ID: {{ match.id }}</li>
+              <li>Sport: {{ match.sportKey }}</li>
+              <li>Date de début: {{ match.commenceTime }}</li>
               <li>Résultats :</li>
               <ul class="list-disc pl-8">
-                <li *ngFor="let outcome of match.Outcomes">{{ outcome.Name }} - Prix: {{ outcome.Price }}</li>
+                <li *ngFor="let outcome of match.outcomes">{{ outcome.name }} - Prix: {{ outcome.price }}</li>
               </ul>
             </ul>
           </div>
