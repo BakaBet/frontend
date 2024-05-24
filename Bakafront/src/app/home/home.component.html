@@ -1,21 +1,194 @@
-<div class="flex justify-center items-center my-10">  
-    <div class="w-1/2 bg-gray-200 p-2">  
-      <div class="flex">
-        <div class="w-1/2 flex flex-col items-center p-1 border-r flex-grow">  
-          <h2 class="text-xl mb-4">parier sur des événements de vie</h2>
-          <img src="assets/life-icon.png" alt="Image 1" class="mb-4 w-32 h-32">
-          <a routerLink="/lifebet">
-          <button class="bg-blue-500 text-white px-4 py-2 rounded">Jouer maintenant !</button>
-          </a>
+<div class="flex justify-center items-center my-10">
+  <div class="w-full md:w-2/3 lg:w-1/2 bg-gray-100 p-8 rounded-2xl shadow-xl">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="flex flex-col items-center p-4">
+        <h2 class="text-xl font-semibold mb-2 text-center">Parier sur des événements de <br> la vie</h2>
+        <img src="assets/life-icon.png" alt="Image 1" class="mb-4 w-48 h-48 object-contain">
+        <button class="bg-gray-700 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300">Jouer maintenant !</button>
+      </div>
+      <div class="flex flex-col items-center p-4">
+        <h2 class="text-xl font-semibold mb-2 text-center">Parier sur des événements sportifs</h2>
+        <img src="assets/sport-icon.png" alt="Image 2" class="mb-4 w-48 h-48 object-contain">
+        <button class="bg-gray-700 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300">Jouer maintenant !</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="flex justify-center items-center my-10">
+  <div class="w-full md:w-2/3 lg:w-1/2 bg-gray-100 p-8 rounded-2xl shadow-xl flex items-center space-x-8">
+    <img src="assets/money-icon.png" alt="Icône d'argent" class="h-48 w-48"> 
+    <div>
+      <h2 class="text-3xl font-bold mb-8">Comment jouer</h2>
+      <div class="flex flex-col space-y-4">
+        <div class="flex items-center space-x-4">
+          <div class="h-8 w-8 flex items-center justify-center rounded-full bg-gray-700 text-white font-bold">1</div>
+          <h3 class="text-xl font-semibold mb-0">Se connecter ou s'inscrire</h3>
         </div>
-        <div class="w-1/2 flex flex-col items-center p-1 border-r flex-grow">  
-          <h2 class="text-xl mb-4">parier sur des événements sportifs</h2>
-          <img src="assets/sport-icon.png" alt="Image 2" class="mb-4 w-32 h-32">
-          <a routerLink="/sportbet">
-            <button class="bg-blue-500 text-white px-4 py-2 rounded">Jouer maintenant !</button>
-          </a>
+        <div class="flex items-center space-x-4">
+          <div class="h-8 w-8 flex items-center justify-center rounded-full bg-gray-700 text-white font-bold">2</div>
+          <h3 class="text-xl font-semibold mb-0">Placer vos paris</h3>
+        </div>
+        <div class="flex items-center space-x-4">
+          <div class="h-8 w-8 flex items-center justify-center rounded-full bg-gray-700 text-white font-bold">3</div>
+          <h3 class="text-xl font-semibold mb-0">Gagner des pièces</h3>
         </div>
       </div>
     </div>
   </div>
-  
+</div>
+
+
+
+
+<div class="flex justify-center items-center my-10">
+  <div class="w-full md:w-2/3 lg:w-1/2 bg-gray-100 p-8 rounded-2xl shadow-xl">
+    <h2 class="text-2xl font-semibold mb-4">Matchs à venir</h2>
+    <div class="flex items-center">
+      <div class="w-full">
+        <div class="space-y-4">
+          <!-- Match 1 -->
+          <div class="flex justify-between items-center border-b border-gray-300 pb-2">
+            <div>
+              <h3 class="font-semibold">Match 1</h3>
+              <p>Date: XX/XX/XXXX</p>
+              <p>Lieu: Ville, Pays</p>
+            </div>
+            <div>
+              <button class="bg-gray-700 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300">Parier</button>
+            </div>
+          </div>
+          <!-- Match 2 -->
+          <div class="flex justify-between items-center border-b border-gray-300 pb-2">
+            <div>
+              <h3 class="font-semibold">Match 2</h3>
+              <p>Date: XX/XX/XXXX</p>
+              <p>Lieu: Ville, Pays</p>
+            </div>
+            <div>
+              <button class="bg-gray-700 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300">Parier</button>
+            </div>
+          </div>
+          <!-- Ajoutez d'autres matchs ici -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="flex justify-center items-center my-10">
+  <div class="w-full md:w-2/3 lg:w-1/2 flex">
+    <!-- Carré -->
+    <div class="w-64 bg-gray-100 text-center p-8 rounded-2xl shadow-xl mr-4">
+      <h2 class="text-2xl font-bold mb-4">POTW</h2>
+      <div class="flex flex-col space-y-4">
+        <button class="bg-gray-700 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300">Player 1</button>
+        <button class="bg-gray-700 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300">Player 2</button>
+        <button class="bg-gray-700 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300">Player 3</button>
+      </div>
+    </div>
+    <!-- Rectangle -->
+    <div class="flex-1 bg-gray-100 p-8 rounded-2xl shadow-xl ml-4">
+      <h2 class="text-2xl text-center font-bold mb-4">POTW</h2>
+      <p class="text-lg font-medium mb-1">Félix LEBRUN</p>
+      <p class="text-sm mb-2">17 - Français - Droitier</p>
+      <p class="mb-1">Rang mondial : 5#</p>
+      <p class="mb-1">Ratio match gagné/perdu : 77%</p>
+      <p class="mb-1">Dans le top 10 : 6 Month</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="flex justify-center items-center my-10">
+  <div class="md:w-2/3 lg:w-1/2 flex">
+    <!-- Carré -->
+    <div class="w-64 bg-gray-100 text-center p-8 rounded-2xl shadow-xl mr-4">
+      <h2 class="text-2xl font-bold mb-4">Vainqueur</h2>
+      <div class="text-left">
+        <p class="font-semibold">Nom du vainqueur:</p>
+        <p class="mb-4">Pseudo du joueur</p>
+        <p class="font-semibold">Mise de départ:</p>
+        <p class="mb-4">XXX coins</p>
+        <p class="font-semibold">Cote du match:</p>
+        <p class="mb-4">X.X</p>
+        <p class="font-semibold">Gains</p>
+        <p>XXX coins</p>
+      </div>
+    </div>
+    <!-- Rectangle -->
+    <div class="flex-1 bg-gray-100 p-8 rounded-2xl shadow-xl ml-4">
+      <h2 class="text-2xl font-semibold mb-4">Demi-finales de la Ligue des Champions</h2>
+      <div class="max-h-60 overflow-auto">
+        <div class="space-y-2">
+          <!-- Match 1 -->
+          <div class="flex justify-between items-center border-b border-gray-300 pb-4">
+            <div>
+              <h3 class="font-semibold">Demi-finale 1</h3>
+              <p>Équipe A vs Équipe B</p>
+              <p>Date: XX/XX/XXXX</p>
+              <p>Lieu: Stade 1</p>
+            </div>
+            <div>
+              <button class="bg-gray-700 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300">Parier</button>
+            </div>
+          </div>
+          <!-- Match 2 -->
+          <div class="flex justify-between items-center border-b border-gray-300 b-4">
+            <div>
+              <h3 class="font-semibold">Demi-finale 2</h3>
+              <p>Équipe C vs Équipe D</p>
+              <p>Date: XX/XX/XXXX</p>
+              <p>Lieu: Stade 2</p>
+            </div>
+            <div>
+              <button class="bg-gray-700 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300">Parier</button>
+            </div>
+          </div>
+          <!-- Match 3 -->
+          <div class="flex justify-between items-center border-b border-gray-300 b-4">
+            <div>
+              <h3 class="font-semibold">Demi-finale 2</h3>
+              <p>Équipe C vs Équipe D</p>
+              <p>Date: XX/XX/XXXX</p>
+              <p>Lieu: Stade 2</p>
+            </div>
+            <div>
+              <button class="bg-gray-700 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300">Parier</button>
+            </div>
+          </div>
+          <!-- Plus de matchs ici -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
