@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component'
 import { SportBetComponent } from './sport-bet/sport-bet.component'
 import { LifeBetComponent } from './life-bet/life-bet.component'
 import { ListematchComponent } from './listematch/listematch.component'
+import { ProfileComponent } from './profile/profile.component';
 
 export const routes: Routes = [
   {path: 'home', component: HomeComponent}, 
@@ -11,4 +12,5 @@ export const routes: Routes = [
   {path: 'sportbet', component: SportBetComponent},
   {path: 'lifebet', component: LifeBetComponent},
   {path: 'test', component: ListematchComponent},
+  {path: 'profil', component: ProfileComponent},
 ];

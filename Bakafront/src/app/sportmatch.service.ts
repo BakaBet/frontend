@@ -17,7 +17,7 @@ export class SportmatchService {
       .pipe(
         catchError(error => {
           console.error('Error fetching matches:', error);
-          throw error; // Re-throw the error to be caught by the subscriber
+          throw error; 
         })
       );
   }
