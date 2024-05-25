@@ -1,26 +1,21 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { CommonModule } from '@angular/common'; 
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-signin',
   standalone: true,
-  imports: [FormsModule,CommonModule,ReactiveFormsModule],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  imports: [RouterModule,FormsModule,CommonModule,ReactiveFormsModule],
+  templateUrl: './signin.component.html',
+  styleUrl: './signin.component.css'
 })
-
-export class LoginComponent {
+export class SigninComponent {
   email: string = '';
   password: string = '';
   rememberMe: boolean = false;
   errorMessage: string = '';
-
-  registerEmail: string = '';
-  registerPassword: string = '';
-  registerConfirmPassword: string = '';
-  registerErrorMessage: string = '';
 
   constructor(private authService: AuthService) {}
   login() {
@@ -35,12 +30,5 @@ export class LoginComponent {
         this.errorMessage = 'Login failed. Please check your credentials.';
       }
     );
-  }
-
-  register() {
-    if (this.registerPassword !== this.registerConfirmPassword) {
-      this.registerErrorMessage = 'Les mots de passe ne correspondent pas';
-      return;
-    }
   }
 }

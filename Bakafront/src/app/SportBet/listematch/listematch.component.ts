@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { SportmatchService } from '../sportmatch.service'
-import { MatchProduct } from '../model/MatchProduct';
+import { SportmatchService } from '../../sportmatch.service'
+import { MatchProduct } from '../../model/MatchProduct';
 import { CommonModule } from '@angular/common';
 
 @Component({
