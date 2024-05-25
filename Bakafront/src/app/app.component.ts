@@ -7,10 +7,12 @@ import { PlayPosterComponent } from './play-poster-component/play-poster-compone
 import { ProfileComponent } from './profile/profile.component';
 import { CommonModule } from '@angular/common';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, HeaderComponent, FooterComponent, HomeComponent, PlayPosterComponent, ProfileComponent, CommonModule,], 
+
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
