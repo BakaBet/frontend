@@ -1,11 +1,7 @@
-export interface Bet {
-    title: string;
-    odds: string;
-    result1: string;
-    result2: string;
-    team1Name: string;
-    team1Odds: string;
-    team2Name: string;
-    team2Odds: string;
-  }
-  
+export class Life_bet {
+  title: string = '';
+  odds: string = '';
+  side: string = '';
+  result1: string = '';
+  result2: string = '';
+}

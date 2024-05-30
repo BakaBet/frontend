@@ -1,51 +1,60 @@
 <div class="flex justify-center items-center bg-gray-100 my-10"> 
-    <div class="max-w-4xl mx-auto shadow-lg overflow-hidden rounded-lg"> 
-    
-      <div class="flex">
-        <img src="/assets/life-icon.png" alt="Heart Icon" class="w-48 h-auto object-cover">
+  <div class="max-w-4xl mx-auto shadow-lg overflow-hidden rounded-lg"> 
   
-    
-        <div class="flex flex-col p-6 bg-blue-800 text-white w-full">
-          <div class="text-lg font-bold mb-4">LIFE EVENTS BET</div>
-          <div class="text-sm mb-5">Create your own bet on any life events</div>
-          
-          <label class="block mb-3">
-            Title:
-            <input type="text" class="form-input mt-1 block w-full rounded text-black" placeholder="Enter title here">
-          </label>
-          
-          <label class="block mb-3">
-            Odds:
-            <input type="text" pattern="\d{1,2}\/\d{1,2}" class="form-input mt-1 block w-full rounded text-black" placeholder="Format: XX/XY" title="Please enter a fraction (XX/XY)">
-          </label>
-  
-          <div class="mb-5">
-            <div>Choose your side:</div>
-            <label class="inline-flex items-center mt-2">
-              <input type="radio" name="side" value="XX/XY" class="form-radio text-blue-500">
-              <span class="ml-2">XX/XY</span>
-            </label>
-            <label class="inline-flex items-center mt-2">
-              <input type="radio" name="side" value="XY/XX" class="form-radio text-blue-500">
-              <span class="ml-2">XY/XX</span>
-            </label>
-          </div>
+    <div class="flex">
+      <img src="/assets/life-icon.png" alt="Heart Icon" class="w-48 h-auto object-cover">
 
-          <label class="block mb-3">
-            Result 1:
-            <input type="text" class="form-input mt-1 block w-full rounded text-black" placeholder="Enter result 1">
+      <div class="flex flex-col p-6 bg-blue-800 text-white w-full">
+        <div class="text-lg font-bold mb-4">LIFE EVENTS BET</div>
+        <div class="text-sm mb-5">Create your own bet on any life events</div>
+        
+        <!-- Formulaire de pari -->
+        <label class="block mb-3">
+          Title:
+          <input type="text" [(ngModel)]="bet.title" name="title" class="form-input mt-1 block w-full rounded text-black" placeholder="Enter title here">
+        </label>
+        
+        <label class="block mb-3">
+          Odds:
+          <input type="text" [(ngModel)]="bet.odds" name="odds" pattern="\d{1,2}\/\d{1,2}" class="form-input mt-1 block w-full rounded text-black" placeholder="Format: XX/XY" title="Please enter a fraction (XX/XY)">
+        </label>
+
+        <div class="mb-5">
+          <div>Choose your side:</div>
+          <label class="inline-flex items-center mt-2">
+            <input type="radio" [(ngModel)]="bet.side" name="side" value="XX/XY" class="form-radio text-blue-500">
+            <span class="ml-2">XX/XY</span>
           </label>
-  
-          <label class="block mb-3">
-            Result 2:
-            <input type="text" class="form-input mt-1 block w-full rounded text-black" placeholder="Enter result 2">
+          <label class="inline-flex items-center mt-2">
+            <input type="radio" [(ngModel)]="bet.side" name="side" value="XY/XX" class="form-radio text-blue-500">
+            <span class="ml-2">XY/XX</span>
           </label>
-          
-          <button class="bg-white hover:bg-gray-100 text-blue-800 font-bold py-2 px-4 rounded transition duration-150 ease-in-out">CREATE</button>
         </div>
-      </div>
-  
-    </div>
-  </div>
 
-  
+        <label class="block mb-3">
+          Result 1:
+          <input type="text" [(ngModel)]="bet.result1" name="result1" class="form-input mt-1 block w-full rounded text-black" placeholder="Enter result 1">
+        </label>
+
+        <label class="block mb-3">
+          Result 2:
+          <input type="text" [(ngModel)]="bet.result2" name="result2" class="form-input mt-1 block w-full rounded text-black" placeholder="Enter result 2">
+        </label>
+        
+        <button (click)="createBet()" class="bg-white hover:bg-gray-100 text-blue-800 font-bold py-2 px-4 rounded transition duration-150 ease-in-out">CREATE</button>
+      </div>
+    </div>
+
+    <!-- Affichage des paris créés -->
+    <div class="mt-4">
+      <div *ngFor="let bet of bets" class="p-4 border rounded bg-white">
+        <div><strong>Title:</strong> {{ bet.title }}</div>
+        <div><strong>Odds:</strong> {{ bet.odds }}</div>
+        <div><strong>Side:</strong> {{ bet.side }}</div>
+        <div><strong>Result 1:</strong> {{ bet.result1 }}</div>
+        <div><strong>Result 2:</strong> {{ bet.result2 }}</div>
+      </div>
+    </div>
+
+  </div>
+</div>
