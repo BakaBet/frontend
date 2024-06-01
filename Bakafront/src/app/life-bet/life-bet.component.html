@@ -19,6 +19,11 @@
           <input type="text" [(ngModel)]="bet.odds" name="odds" pattern="\d{1,2}\/\d{1,2}" class="form-input mt-1 block w-full rounded text-black" placeholder="Format: XX/XY" title="Please enter a fraction (XX/XY)">
         </label>
 
+        <label class="block mb-3">
+          Starting Bet Amount:
+          <input type="number" [(ngModel)]="bet.startingBetAmount" name="startingBetAmount" class="form-input mt-1 block w-full rounded text-black" placeholder="Enter starting bet amount">
+        </label>
+
         <div class="mb-5">
           <div>Choose your side:</div>
           <label class="inline-flex items-center mt-2">
@@ -31,17 +36,33 @@
           </label>
         </div>
 
+        <div class="mb-3">
+          <div>Allow odds negotiation:</div>
+          <label class="inline-flex items-center mt-2">
+            <input type="checkbox" [(ngModel)]="bet.allowNegotiation" class="form-checkbox text-blue-500">
+            <span class="ml-2">Yes</span>
+          </label>
+        </div>
+
+        <div class="mb-3">
+          <div>Allow others to join the bet:</div>
+          <label class="inline-flex items-center mt-2">
+            <input type="checkbox" [(ngModel)]="bet.allowJoining" class="form-checkbox text-blue-500">
+            <span class="ml-2">Yes</span>
+          </label>
+        </div>
+
         <label class="block mb-3">
           Result 1:
-          <input type="text" [(ngModel)]="bet.result1" name="result1" class="form-input mt-1 block w-full rounded text-black" placeholder="Enter result 1">
+          <textarea [(ngModel)]="bet.result1Description" name="result1Description" class="form-textarea mt-1 block w-full rounded text-black" placeholder="Describe what defines Result 1"></textarea>
         </label>
 
         <label class="block mb-3">
           Result 2:
-          <input type="text" [(ngModel)]="bet.result2" name="result2" class="form-input mt-1 block w-full rounded text-black" placeholder="Enter result 2">
+          <textarea [(ngModel)]="bet.result2Description" name="result2Description" class="form-textarea mt-1 block w-full rounded text-black" placeholder="Describe what defines Result 2"></textarea>
         </label>
         
-        <button (click)="createBet()" class="bg-white hover:bg-gray-100 text-blue-800 font-bold py-2 px-4 rounded transition duration-150 ease-in-out">CREATE</button>
+        <button (click)="createBet()" class="bg-white hover:bg-gray-100 text-blue-800 font-bold py-2 px-4 rounded transition duration-150 ease-in-out">CREATE BET</button>
       </div>
     </div>
 
@@ -51,8 +72,8 @@
         <div><strong>Title:</strong> {{ bet.title }}</div>
         <div><strong>Odds:</strong> {{ bet.odds }}</div>
         <div><strong>Side:</strong> {{ bet.side }}</div>
-        <div><strong>Result 1:</strong> {{ bet.result1 }}</div>
-        <div><strong>Result 2:</strong> {{ bet.result2 }}</div>
+        <div><strong>Result 1 Description:</strong> {{ bet.result1Description }}</div>
+        <div><strong>Result 2 Description:</strong> {{ bet.result2Description }}</div>
       </div>
     </div>
 
