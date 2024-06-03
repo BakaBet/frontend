@@ -61,7 +61,9 @@ export class AuthService {
     return this.userId;
   }
 
-  logout(){
-    return this.http.post(this.apiUrlLogout,null);
+  logout() {
+    this.userId = null;
+    this.isLoggedInSubject.next(false);
+    return this.http.post(this.apiUrlLogout, null);
   }
 }

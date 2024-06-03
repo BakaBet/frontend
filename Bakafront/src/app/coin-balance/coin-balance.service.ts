@@ -14,7 +14,7 @@ export class CoinBalanceService {
   
   getBakacoins(): Observable<number> {
     const userId = this.authService.getUserId();
-    const url = `https://localhost:7023/api/Users/8c92a5e9-ecda-41ce-8341-606fe4aebcab/balance`;
+    const url = `https://localhost:7023/api/Users/${userId}/balance`;
     return this.http.get<number>(url);
   }
 }
