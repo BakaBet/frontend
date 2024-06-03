@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { CommonModule } from '@angular/common';
 })
 export class HeaderComponent implements OnInit {
   isLoggedIn = false;
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.authService.isLoggedIn$.subscribe(isLoggedIn => {
@@ -26,5 +27,6 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.authService.logout();
     this.isLoggedIn = false;
+    this.router.navigate(['/signin']);
   }
 }
