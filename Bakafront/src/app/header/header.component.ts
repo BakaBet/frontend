@@ -5,12 +5,13 @@ import { AuthService } from '../auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { CoinBalanceComponent } from '../coin-balance/coin-balance.component';
 
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, RouterModule,FormsModule,CommonModule,ReactiveFormsModule],
+  imports: [RouterLink, RouterModule,FormsModule,CommonModule,ReactiveFormsModule, CoinBalanceComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
