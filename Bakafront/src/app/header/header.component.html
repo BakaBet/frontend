@@ -12,9 +12,10 @@
     <a routerLink="/sportbet" class="font-bold hover:text-blue-700">Sport Bet</a>
     <a routerLink="/lifebet" class="font-bold hover:text-blue-700">Life Bet</a>
     <a routerLink="/About-us" class=" font-bold hover:text-blue-700">About-us</a>
-    <a routerLink="/signin" class="font-bold hover:text-blue-700 flex items-center">
+    <a *ngIf="!isLoggedIn" routerLink="/signin" class="font-bold hover:text-blue-700 flex items-center">
       <i class="fa fa-user mr-1"></i><span>Login</span>
     </a>
-    <a routerLink="/profil" class="font-bold hover:text-gray-500">Profil</a>
+    <a *ngIf="isLoggedIn" routerLink="/profil" class="font-bold hover:text-gray-500">Profil</a>
+    <button *ngIf="isLoggedIn" class="font-bold hover:text-gray-500" (click)="logout()">Logout</button>
   </nav>
 </header>

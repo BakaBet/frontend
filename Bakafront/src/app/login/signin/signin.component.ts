@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -17,12 +17,13 @@ export class SigninComponent {
   rememberMe: boolean = false;
   errorMessage: string = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
   login() {
     this.authService.login(this.email, this.password, this.rememberMe).subscribe(
       response => {
         // Handle successful response
         console.log('Login successful', response);
+        this.router.navigate(['/sportbet']); 
       },
       error => {
         // Handle error response

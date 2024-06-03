@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { CommonModule } from '@angular/common'; 
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -12,16 +12,31 @@ import { RouterModule } from '@angular/router';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
-  registerEmail: string = '';
-  registerPassword: string = '';
-  registerConfirmPassword: string = '';
-  registerErrorMessage: string = '';
+  Email: string = '';
+  Password: string = '';
+  ConfirmPassword: string = '';
+  ErrorMessage: string = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
+
   register() {
-    if (this.registerPassword !== this.registerConfirmPassword) {
-      this.registerErrorMessage = 'Les mots de passe ne correspondent pas';
-      return;
-    }
+    const registerData = {
+      email: this.Email,
+      password: this.Password,
+      confirmPassword: this.ConfirmPassword
+    };
+
+    this.authService.register(registerData).subscribe(
+      response => {
+        // Handle successful registration
+        console.log('Registration successful', response);
+        this.router.navigate(['/sportbet']); // Rediriger vers la page d'accueil
+      },
+      error => {
+        // Handle error response
+        console.error('Registration failed', error);
+        this.ErrorMessage = 'Registration failed. Please check your details.';
+      }
+    );
   }
 }
