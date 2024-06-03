@@ -21,7 +21,8 @@ export class ListematchComponent implements OnInit {
       this.matches = data.map(match => ({
         ...match,
         homeCote: this.getCote(match.outcomes, match.homeTeam),
-        awayCote: this.getCote(match.outcomes, match.awayTeam)
+        awayCote: this.getCote(match.outcomes, match.awayTeam),
+        showDetails: false
       }));
     });
   }
@@ -30,9 +31,14 @@ export class ListematchComponent implements OnInit {
     const outcome = outcomes.find(outcome => outcome.name === team);
     return outcome ? outcome.price : 0;
   }
+
+  toggleDetails(match: MatchProductWithCote): void {
+    match.showDetails = !match.showDetails;
+  }
 }
 
 interface MatchProductWithCote extends MatchProduct {
   homeCote: number;
   awayCote: number;
+  showDetails: boolean;
 }

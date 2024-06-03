@@ -26,22 +26,27 @@
         </div>
 
         <div class="flex justify-center items-center space-x-6">
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded">Home Win</button>
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded">Draw</button>
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded">Away Win</button>
+          <button class="bg-gray-700 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300">Home Win</button>
+          <button class="bg-gray-700 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300">Draw</button>
+          <button class="bg-gray-700 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300">Away Win</button>
         </div>
 
         <div class="mt-6">
-          <div class="font-bold text-lg">Détails du match :</div>
-          <ul class="list-disc pl-8">
-            <li>Match ID: {{ match.id }}</li>
-            <li>Sport: {{ match.sportKey }}</li>
-            <li>Date de début: {{ match.commenceTime }}</li>
-            <li>Résultats :</li>
+          <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full" (click)="toggleDetails(match)">
+            {{ match.showDetails ? 'Masquer les détails' : 'Afficher les détails' }}
+          </button>
+          <div *ngIf="match.showDetails" class="mt-4">
+            <div class="font-bold text-lg">Détails du match :</div>
             <ul class="list-disc pl-8">
-              <li *ngFor="let outcome of match.outcomes">{{ outcome.name }} - Prix: {{ outcome.price }}</li>
+              <li>Match ID: {{ match.id }}</li>
+              <li>Sport: {{ match.sportKey }}</li>
+              <li>Date de début: {{ match.commenceTime }}</li>
+              <li>Résultats :</li>
+              <ul class="list-disc pl-8">
+                <li *ngFor="let outcome of match.outcomes">{{ outcome.name }} - Prix: {{ outcome.price }}</li>
+              </ul>
             </ul>
-          </ul>
+          </div>
         </div>
       </div>
     </ng-container>
