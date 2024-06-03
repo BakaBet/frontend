@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { SportBetComponent } from './sportbet/sport-bet/sport-bet.component'
+import { SportBetComponent } from './SportBet/sport-bet/sport-bet.component';
 import { LifeBetComponent } from './life-bet/life-bet.component'
 import { ProfileComponent } from './profile/profile.component';
 import { SigninComponent } from './login/signin/signin.component';
