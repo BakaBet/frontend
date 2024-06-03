@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SportmatchService } from '../../sportmatch.service'
+import { SportmatchService } from '../../Service/sportmatch.service'
 import { MatchProduct, Outcome } from '../../model/MatchProduct';
 import { CommonModule } from '@angular/common';
 
@@ -28,8 +28,9 @@ export class ListematchComponent implements OnInit {
   }
 
   private getCote(outcomes: Outcome[], team: string): number {
-    const outcome = outcomes.find(outcome => outcome.name === team);
-    return outcome ? outcome.price : 0;
+    //const outcome = outcomes.find(outcome => outcome.name === team);
+    //return outcome ? outcome.price : 0;
+    return 1;
   }
 
   toggleDetails(match: MatchProductWithCote): void {

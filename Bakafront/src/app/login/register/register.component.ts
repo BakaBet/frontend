@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../auth.service';
+import { AuthService } from '../../Service/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { CommonModule } from '@angular/common'; 
 import { Router, RouterModule } from '@angular/router';
@@ -15,6 +15,10 @@ export class RegisterComponent {
   Email: string = '';
   Password: string = '';
   ConfirmPassword: string = '';
+  FirstName: string = '';
+  LastName: string = '';
+  PhoneNumber: string = '';
+  UserName: string = '';
   ErrorMessage: string = '';
 
   constructor(private authService: AuthService, private router: Router) {}
@@ -23,17 +27,21 @@ export class RegisterComponent {
     const registerData = {
       email: this.Email,
       password: this.Password,
-      confirmPassword: this.ConfirmPassword
+      confirmPassword: this.ConfirmPassword,
+      firstName: this.FirstName,
+      lastName: this.LastName,
+      phoneNumber: this.PhoneNumber,
+      userName: this.UserName,
+      normalizedEmail: this.Email.toLowerCase(),
+      normalizedUserName: this.UserName.toLowerCase()
     };
 
     this.authService.register(registerData).subscribe(
       response => {
-        // Handle successful registration
         console.log('Registration successful', response);
         this.router.navigate(['/sportbet']); // Rediriger vers la page d'accueil
       },
       error => {
-        // Handle error response
         console.error('Registration failed', error);
         this.ErrorMessage = 'Registration failed. Please check your details.';
       }

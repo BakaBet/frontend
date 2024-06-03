@@ -1,21 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { environment } from '../environments/environments';
+import { AuthService } from '../Service/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class CoinBalanceService {
-  private apiUrl = 'https://localhost:7127/api/Account/bakacoins';
 
-  constructor(private http: HttpClient) { }
-
-  getBakaCoins(): Observable<any> {
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${environment.SportsOddsApi.ApiKey}` 
-    });
-
-    return this.http.get<{bakaCoins: number}>(this.apiUrl, { headers });
+  constructor(private http: HttpClient, private authService: AuthService) { }
+  
+  getBakacoins(): Observable<number> {
+    const userId = this.authService.getUserId();
+    const url = `https://localhost:7023/api/Users/8c92a5e9-ecda-41ce-8341-606fe4aebcab/balance`;
+    return this.http.get<number>(url);
   }
 }

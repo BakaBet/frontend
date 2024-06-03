@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../auth.service';
+import { AuthService } from '../../Service/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
@@ -12,14 +12,15 @@ import { RouterModule, Router } from '@angular/router';
   styleUrl: './signin.component.css'
 })
 export class SigninComponent {
-  email: string = '';
+  userName: string = '';
   password: string = '';
   rememberMe: boolean = false;
   errorMessage: string = '';
 
   constructor(private authService: AuthService, private router: Router) {}
+  
   login() {
-    this.authService.login(this.email, this.password, this.rememberMe).subscribe(
+    this.authService.login(this.userName, this.password, this.rememberMe).subscribe(
       response => {
         // Handle successful response
         console.log('Login successful', response);
