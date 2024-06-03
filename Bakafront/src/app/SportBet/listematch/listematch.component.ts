@@ -28,9 +28,8 @@ export class ListematchComponent implements OnInit {
   }
 
   private getCote(outcomes: Outcome[], team: string): number {
-    //const outcome = outcomes.find(outcome => outcome.name === team);
-    //return outcome ? outcome.price : 0;
-    return 1;
+    const outcome = outcomes.find(outcome => outcome.name === team);
+    return outcome ? outcome.price : 0;
   }
 
   toggleDetails(match: MatchProductWithCote): void {
