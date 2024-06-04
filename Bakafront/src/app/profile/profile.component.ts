@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProfileService } from './profile.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { AuthService } from '../Service/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -10,23 +11,21 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
-  userProfile: any = {};
 
-  constructor(private profileService: ProfileService) {}
+export class ProfileComponent implements OnInit {
+  userInfo: any;
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.loadUserProfile();
-  }
-
-  loadUserProfile() {
-    this.profileService.getUserProfile().subscribe({
-      next: (data) => {
-        this.userProfile = data;
+    this.authService.getUserInfo().subscribe(
+      (response) => {
+        this.userInfo = response;
+        console.log('User Info:', this.userInfo);
       },
-      error: (error) => {
-        console.error('Error fetching profile', error);
+      (error) => {
+        console.error('Failed to fetch user info:', error);
       }
-    });
+    );
   }
 }

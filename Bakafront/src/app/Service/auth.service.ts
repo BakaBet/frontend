@@ -9,6 +9,7 @@ export class AuthService {
   private apiUrlLogin = 'https://localhost:7023/api/Login/login';
   private apiUrlLogout = 'https://localhost:7023/api/Login/logout';
   private apiUrlRegister = 'https://localhost:7023/api/Login/register';
+  private ApiUrlUser = 'https://localhost:7023/api/Users/'
   
 
   private isLoggedInSubject = new BehaviorSubject<boolean>(false);
@@ -35,6 +36,7 @@ export class AuthService {
     );
 
   }
+
   register(registerData: {
     email: string;
     password: string;
@@ -59,6 +61,11 @@ export class AuthService {
 
   getUserId(): string | null {
     return this.userId;
+  }
+
+  getUserInfo(): Observable<any> {
+    const url = `https://localhost:7023/api/Users/${this.userId}`;
+    return this.http.get<any>(url);
   }
 
   logout() {

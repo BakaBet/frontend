@@ -1,9 +1,35 @@
-<h2>Test</h2>
-
-<div *ngIf="userProfile">
-    <h2>User Profile</h2>
-    <p><strong>Name:</strong> {{ userProfile.name }}</p>
-    <p><strong>Email:</strong> {{ userProfile.email }}</p>
-    <p><strong>Bakacoins:</strong> {{ userProfile.bakacoins }}</p>
+<div class="flex items-center justify-center min-h-screen">
+  <div class="w-full max-w-md p-8 rounded-lg bg-gray-100 shadow-md">
+    <h2 class="text-2xl font-bold mb-6 text-center mt-8">Profil Utilisateur</h2>
+    <div class="mb-4">
+      <label class="block text-black text-sm font-bold mb-2" for="firstName">Prénom</label>
+      <input type="text" id="firstName" [value]="userInfo?.firstName"
+        class="shadow appearance-none border rounded-full w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline disabled-input bg-neutral-700" disabled />
+    </div>
+    <div class="mb-4">
+      <label class="block text-black text-sm font-bold mb-2" for="lastName">Nom de famille</label>
+      <input type="text" id="lastName" [value]="userInfo?.lastName"
+        class="shadow appearance-none border rounded-full w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline disabled-input bg-neutral-700" disabled />
+    </div>
+    <div class="mb-4">
+      <label class="block text-black text-sm font-bold mb-2" for="email">Email</label>
+      <input type="email" id="email" [value]="userInfo?.email"
+        class="shadow appearance-none border rounded-full w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline disabled-input bg-neutral-700" disabled />
+    </div>
+    <div class="mb-4">
+      <label class="block text-black text-sm font-bold mb-2" for="Pseudo">Pseudo</label>
+      <input type="text" id="Pseudo" [value]="userInfo?.userName"
+        class="shadow appearance-none border rounded-full w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline disabled-input bg-neutral-700" disabled />
+    </div>
+    <div class="mb-4">
+      <label class="block text-black text-sm font-bold mb-2" for="phoneNumber">Numéro de téléphone</label>
+      <input type="tel" id="phoneNumber" [value]="userInfo?.phoneNumber"
+        class="shadow appearance-none border rounded-full w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline disabled-input bg-neutral-700" disabled />
+    </div>
+    <div class="mb-4">
+      <label class="block text-black text-sm font-bold mb-2" for="Coins">Coins</label>
+      <input type="tel" id="Coins" [value]="userInfo?.coins"
+        class="shadow appearance-none border rounded-full w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline disabled-input bg-neutral-700" disabled />
+    </div>
   </div>
-  
+</div>
