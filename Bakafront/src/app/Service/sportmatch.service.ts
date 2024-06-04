@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { AuthService } from './auth.service';
 import { Observable, BehaviorSubject, switchMap, map, catchError } from 'rxjs';
 import { MatchProduct } from '../model/MatchProduct';
 import { environment } from '../environments/environments';
@@ -10,7 +10,8 @@ import { environment } from '../environments/environments';
 })
 export class SportmatchService {
   private apiUrl = 'https://localhost:7023/api/Events/sports';
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
   private formatDate(dateStr: string): string {
     const date = new Date(dateStr);
@@ -36,4 +37,36 @@ export class SportmatchService {
       })
     );
   }
+
+  
+
+  getSportBetUser(): Observable<UserBet[]> {
+    const url = `https://localhost:7023/api/Bet/${this.authService.getUserId()}`;
+    return this.http.get<UserBet[]>(url).pipe(
+      map(bets => bets.map(bet => ({
+        ...bet,
+        datePlaced: this.formatDate(bet.datePlaced)
+      }))),
+      catchError(error => {
+        console.error('Error fetching user sport bets:', error);
+        throw error;
+      })
+    );
+  }
+
+  getBakacoins(): Observable<number> {
+    const userId = this.authService.getUserId();
+    const url = `https://localhost:7023/api/Users/${userId}/balance`;
+    return this.http.get<number>(url);
+  }
+}
+
+export interface UserBet {
+  id: number;
+  userId: string;
+  eventId: string;
+  amount: number;
+  datePlaced: string;
+  odd: number;
+  isWon: boolean;
 }

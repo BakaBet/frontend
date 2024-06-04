@@ -1,13 +1,10 @@
 export interface MatchProduct {
     id: string,
+    sportKey :string,
     sportTitle: string,
     commenceTime: string,
     homeTeam: string,
     awayTeam: string,
-    outcomes: Outcome[];
-}
-
-export interface Outcome {
-    name: string;
-    price: number;
+    homeOutcome: 0,
+    awayOutcome: 0,
 }

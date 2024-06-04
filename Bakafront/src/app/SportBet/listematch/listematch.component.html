@@ -27,14 +27,14 @@
             <i class="fa fa-house mr-4 text-6xl text-gray-500"></i>
             <div>
               <div class="font-bold text-xl">{{ match.homeTeam }}</div>
-              <div>Cote: {{ match.homeCote }}</div>
+              <div>Cote: {{ match.homeOutcome }}</div>
             </div>
           </div>
 
           <div class="flex items-center space-x-6">
             <div>
               <div class="font-bold text-xl">{{ match.awayTeam }}</div>
-              <div>Cote: {{ match.awayCote }}</div>
+              <div>Cote: {{ match.awayOutcome }}</div>
             </div>
             <i class="fa fa-plane ml-4 text-6xl text-gray-500"></i>
           </div>
@@ -46,14 +46,14 @@
         </div>
 
         <div class="flex justify-center items-center space-x-6">
-          <button [style.backgroundColor]="match.homeCote === 0 ? '#ccc' : 'bg-gray-700'"
-          [style.cursor]="match.homeCote === 0 ? 'not-allowed' : 'pointer'"
+          <button [style.backgroundColor]="match.homeOutcome === 0 ? '#ccc' : 'bg-gray-700'"
+          [style.cursor]="match.homeOutcome === 0 ? 'not-allowed' : 'pointer'"
           class="bg-gray-700 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300">Home Win</button>
-          <button [style.backgroundColor]="match.awayCote === 0 ? '#ccc' : 'bg-gray-700'"
-          [style.cursor]="match.awayCote === 0 ? 'not-allowed' : 'pointer'"
+          <button [style.backgroundColor]="match.awayOutcome === 0 ? '#ccc' : 'bg-gray-700'"
+          [style.cursor]="match.awayOutcome === 0 ? 'not-allowed' : 'pointer'"
           class="bg-gray-700 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300">Draw</button>
-          <button [style.backgroundColor]="match.awayCote === 0 ? '#ccc' : 'bg-gray-700'"
-          [style.cursor]="match.awayCote === 0 ? 'not-allowed' : 'pointer'"
+          <button [style.backgroundColor]="match.awayOutcome === 0 ? '#ccc' : 'bg-gray-700'"
+          [style.cursor]="match.awayOutcome === 0 ? 'not-allowed' : 'pointer'"
           class="bg-gray-700 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300">Away Win</button>
         </div>
 
@@ -68,9 +68,6 @@
               <li>Sport: {{ match.sportTitle }}</li>
               <li>Date de début: {{ match.commenceTime }}</li>
               <li>Résultats :</li>
-              <ul class="list-disc pl-8">
-                <li *ngFor="let outcome of match.outcomes">{{ outcome.name }} - Prix: {{ outcome.price }}</li>
-              </ul>
             </ul>
           </div>
         </div>

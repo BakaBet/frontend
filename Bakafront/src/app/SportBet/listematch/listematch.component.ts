@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SportmatchService } from '../../Service/sportmatch.service'
-import { MatchProduct, Outcome } from '../../model/MatchProduct';
+import { MatchProduct } from '../../model/MatchProduct';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -19,14 +19,13 @@ export class ListematchComponent implements OnInit {
   searchDate: string = '';
   filteredMatches: MatchProductWithCote[] = [];
   
+  
   constructor(private matchService: SportmatchService) { }
 
   ngOnInit(): void {
     this.matchService.getMatches().subscribe(data => {
       this.matches = data.map(match => ({
         ...match,
-        homeCote: this.getCote(match.outcomes, match.homeTeam),
-        awayCote: this.getCote(match.outcomes, match.awayTeam),
         commenceTimeFormatted: this.formatDate(match.commenceTime),
         showDetails: false
       }));
@@ -47,11 +46,6 @@ export class ListematchComponent implements OnInit {
     return date.toLocaleDateString('fr-FR', options);
   }
 
-  private getCote(outcomes: Outcome[], team: string): number {
-    const outcome = outcomes.find(outcome => outcome.name === team);
-    return outcome ? outcome.price : 0;
-  }
-
   toggleDetails(match: MatchProductWithCote): void {
     match.showDetails = !match.showDetails;
   }
@@ -67,7 +61,5 @@ export class ListematchComponent implements OnInit {
 }
 
 interface MatchProductWithCote extends MatchProduct {
-  homeCote: number;
-  awayCote: number;
   showDetails: boolean;
 }

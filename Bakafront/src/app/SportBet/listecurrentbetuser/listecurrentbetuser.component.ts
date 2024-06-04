@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SportmatchService } from '../../Service/sportmatch.service'
-import { MatchProduct, Outcome } from '../../model/MatchProduct';
+import { SportmatchService, UserBet } from '../../Service/sportmatch.service'
+import { MatchProduct } from '../../model/MatchProduct';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -13,34 +13,17 @@ import { CommonModule } from '@angular/common';
 
 export class ListecurrentbetuserComponent implements OnInit {
 
-  @Input() matches: MatchProduct[] | undefined;
-  
-  userBets: any[] = [
-    {
-      matchId: 1,
-      homeTeam: "Team A",
-      awayTeam: "Team B",
-      commenceTime: "2024-06-05 10:00:00",
-      betAmount: 10,
-      selection: "Team A",
-      playCote: 2.5,
-    },
-    {
-      matchId: 2,
-      homeTeam: "Team C",
-      awayTeam: "Team D",
-      commenceTime: "2024-06-06 15:00:00",
-      betAmount: 20,
-      selection: "Draw",
-      playCote: 3.0,
-    }
-  ];  // Array to store user's bets (hardcoded for demo)
-
+  userBets: UserBet[] = [];
   isBetsHidden = false; // Flag to track visibility
 
-  constructor() { }
+  constructor(private matchService: SportmatchService) { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    const userId = 'user-id-example'; // Replace this with actual user ID logic
+    this.matchService.getSportBetUser().subscribe(data => {
+      this.userBets = data;
+    });
+  }
 
   toggleBetsVisibility(): void {
     this.isBetsHidden = !this.isBetsHidden;
