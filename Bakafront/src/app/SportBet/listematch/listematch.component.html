@@ -41,7 +41,7 @@
         </div>
 
         <div class="text-center my-6">
-          <div class="font-bold text-black mb-4 text-lg">{{ match.commenceTime }}</div>
+          <div class="font-bold text-black mb-4 text-lg commence-time">{{ match.commenceTime }}</div>
           <input type="number" class="text-black w-full py-3 rounded text-center" placeholder="Montant à parier">
         </div>
 
@@ -58,14 +58,14 @@
         </div>
 
         <div class="mt-6">
-          <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full" (click)="toggleDetails(match)">
+          <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full toggle-details-button" (click)="toggleDetails(match)">
             {{ match.showDetails ? 'Masquer les détails' : 'Afficher les détails' }}
           </button>
-          <div *ngIf="match.showDetails" class="mt-4">
+          <div *ngIf="match.showDetails" class="mt-4 match-details">
             <div class="font-bold text-lg">Détails du match :</div>
             <ul class="list-disc pl-8">
               <li>Match ID: {{ match.id }}</li>
-              <li>Sport: {{ match.sportTitle }}</li>
+              <li class="sport-title">Sport: {{ match.sportTitle }}</li>
               <li>Date de début: {{ match.commenceTime }}</li>
               <li>Résultats :</li>
             </ul>
