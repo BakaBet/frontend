@@ -16,6 +16,7 @@ export class ListematchComponent implements OnInit {
   matches: MatchProductWithCote[] = [];
   searchTeam: string = '';
   searchSport: string = '';
+  searchDate: string = '';
   filteredMatches: MatchProductWithCote[] = [];
   
   constructor(private matchService: SportmatchService) { }
@@ -26,10 +27,24 @@ export class ListematchComponent implements OnInit {
         ...match,
         homeCote: this.getCote(match.outcomes, match.homeTeam),
         awayCote: this.getCote(match.outcomes, match.awayTeam),
+        commenceTimeFormatted: this.formatDate(match.commenceTime),
         showDetails: false
       }));
-      this.applyFilters();
+      this.filteredMatches = this.matches;
     });
+  }
+
+  private formatDate(dateStr: string): string {
+    const date = new Date(dateStr);
+    const options: Intl.DateTimeFormatOptions = { 
+      hour: '2-digit', 
+      minute: '2-digit', 
+      second: '2-digit', 
+      day: '2-digit', 
+      month: '2-digit', 
+      year: 'numeric' 
+    };
+    return date.toLocaleDateString('fr-FR', options);
   }
 
   private getCote(outcomes: Outcome[], team: string): number {
@@ -42,11 +57,12 @@ export class ListematchComponent implements OnInit {
   }
 
   applyFilters(): void {
-    this.filteredMatches = this.matches.filter(match => {
-      const teamMatch = this.searchTeam ? match.homeTeam.toLowerCase().includes(this.searchTeam.toLowerCase()) || match.awayTeam.toLowerCase().includes(this.searchTeam.toLowerCase()) : true;
-      const sportMatch = this.searchSport ? match.sportTitle.toLowerCase().includes(this.searchSport.toLowerCase()) : true;
-      return teamMatch && sportMatch;
-    });
+    this.filteredMatches = this.matches.filter(match =>
+      (this.searchTeam ? match.homeTeam.includes(this.searchTeam) || match.awayTeam.includes(this.searchTeam) : true) &&
+      (this.searchSport ? match.sportTitle.includes(this.searchSport) : true) &&
+      (this.searchDate ? new Date(match.commenceTime).toLocaleDateString('en-US') === new Date(this.searchDate).toLocaleDateString('en-US') : true)
+      
+    );
   }
 }
 
