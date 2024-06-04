@@ -86,3 +86,15 @@
         </div>
       </form>
     </div>
+  </div>
+</div>
+
+<div class="mt-4">
+  <div *ngFor="let bet of bets" class="p-4 border rounded bg-white">
+    <div><strong>Title:</strong> {{ bet.title }}</div>
+    <div><strong>Odds:</strong> {{ bet.odds }}</div>
+    <div><strong>Side:</strong> {{ bet.side }}</div>
+    <div><strong>Result 1 Description:</strong> {{ bet.result1Description }}</div>
+    <div><strong>Result 2 Description:</strong> {{ bet.result2Description }}</div>
+  </div>
+</div>
