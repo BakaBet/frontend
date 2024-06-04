@@ -16,7 +16,8 @@ export class ListecurrentbetuserComponent implements OnInit {
 
   userBets: UserBet[] = [];
   matches: { [key: string]: MatchProduct } = {}; 
-  isBetsHidden = false; 
+  isBetsHidden = false;
+  selectedFilter: string = 'all'; // Par défaut, afficher tous les paris
 
   constructor(private matchService: SportmatchService) { }
 
@@ -29,7 +30,16 @@ export class ListecurrentbetuserComponent implements OnInit {
 
   loadBets(): void {
     this.matchService.getSportBetUser().subscribe(bets => {
+      if (this.selectedFilter === 'won') {
+        bets = bets.filter(bet => bet.isWon);
+      } else if (this.selectedFilter === 'lost') {
+        bets = bets.filter(bet => !bet.isWon && bet.isEnded);
+      } else if (this.selectedFilter === 'unfinished') {
+        bets = bets.filter(bet => !bet.isEnded);
+      }
+      
       this.userBets = bets;
+      
       const matchRequests = bets.map(bet => this.matchService.getMatch(bet.eventId));
       forkJoin(matchRequests).subscribe(matches => {
         matches.forEach(match => {
@@ -41,5 +51,10 @@ export class ListecurrentbetuserComponent implements OnInit {
 
   toggleBetsVisibility(): void {
     this.isBetsHidden = !this.isBetsHidden;
+  }
+
+  changeFilter(filter: string): void {
+    this.selectedFilter = filter;
+    this.loadBets();
   }
 }

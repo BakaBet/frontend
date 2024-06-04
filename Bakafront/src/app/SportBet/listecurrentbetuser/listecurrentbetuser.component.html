@@ -6,13 +6,30 @@
         {{ isBetsHidden ? 'Afficher les paris' : 'Cacher les paris' }}
       </button>
     </h2>
+
+
+    <div *ngIf="!isBetsHidden">
+    <div class="flex justify-center mb-4">
+      <button (click)="changeFilter('all')" class="mx-2 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full">Tous</button>
+      <button (click)="changeFilter('won')" class="mx-2 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">Gagnés</button>
+      <button (click)="changeFilter('lost')" class="mx-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">Perdus</button>
+      <button (click)="changeFilter('unfinished')" class="mx-2 bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-full">Non finis</button>
+    </div>
     <div *ngIf="userBets.length > 0">
-      <div *ngIf="!isBetsHidden">
-        <ng-container *ngFor="let bet of userBets">
-          <div class="bg-gray-200 p-6 rounded-lg mb-6 w-full" *ngIf="matches[bet.eventId]">
+      <ng-container *ngFor="let bet of userBets">
+          <div [ngClass]="{
+            'bg-green-100': bet.isEnded && bet.isWon,
+            'bg-red-100': bet.isEnded && !bet.isWon,
+            'bg-gray-100': !bet.isEnded,
+            'p-6 rounded-lg mb-6 w-full': true}" *ngIf="matches[bet.eventId]">
+
             <div class="flex justify-between">
               <div class="flex items-center space-x-6">
-                <i class="fa fa-bolt mr-4 text-6xl text-gray-500"></i>
+                <i [ngClass]="{
+                  'text-green-400': bet.isEnded && bet.isWon,
+                  'text-red-400': bet.isEnded && !bet.isWon,
+                  'fa fa-bolt mr-4 text-6xl': true
+                }"></i>
                 <div>
                   <div class="font-bold text-xl">{{ matches[bet.eventId].homeTeam }}</div>
                   <div>VS</div>
@@ -23,19 +40,31 @@
                 <div class="font-bold text-black mb-4 text-lg">{{ matches[bet.eventId].commenceTime }}</div>
                 <div class="flex justify-center">
                   <div class="flex flex-col items-center">
-                    <div>Mise: {{ bet.amount }}</div>
+                    <div>Team : {{ bet.team }}</div>
+                    <div>Mise : {{ bet.amount }}</div>
                     <div>Cote : {{ bet.odd }}</div>
-                    <div class="font-bold text-black mt-2">Gain potentiel: {{ bet.amount * (bet.odd || 0) }}</div>
+                    <div class="font-bold text-black mt-2">
+                      <ng-container *ngIf="!bet.isEnded">
+                        Gain potentiel : {{ (bet.amount * (bet.odd || 0)).toFixed(1) }}
+                      </ng-container>
+                      <ng-container *ngIf="bet.isEnded && !bet.isWon">
+                        Perdu
+                      </ng-container>
+                      <ng-container *ngIf="bet.isEnded && bet.isWon">
+                        Gagné : {{ bet.gains }}
+                      </ng-container>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </ng-container>
-      </div>
+      </ng-container>
+
     </div>
     <div *ngIf="userBets.length === 0" class="text-center">
-      <p>Vous n'avez aucun pari pour le moment.</p>
+      <p>Aucun pari</p>
     </div>
+  </div>
   </div>
 </div>

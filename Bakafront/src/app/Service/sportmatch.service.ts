@@ -103,4 +103,7 @@ export interface UserBet {
   datePlaced: string;
   odd: number;
   isWon: boolean;
+  team : string;
+  isEnded : boolean;
+  gains : number;
 }
