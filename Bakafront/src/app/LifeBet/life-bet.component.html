@@ -81,6 +81,8 @@
             placeholder="Décrivez ce qui définit le Résultat 2"/>
         </div>
 
+
+        
         <div class="flex justify-center">
           <button type="submit" class="bg-gray-700 font-bold text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300">CRÉER UN PARI</button>
         </div>
@@ -90,11 +92,13 @@
 </div>
 
 <div class="mt-4">
-  <div *ngFor="let bet of bets" class="p-4 border rounded bg-white">
-    <div><strong>Title:</strong> {{ bet.title }}</div>
-    <div><strong>Odds:</strong> {{ bet.odds }}</div>
-    <div><strong>Side:</strong> {{ bet.side }}</div>
-    <div><strong>Result 1 Description:</strong> {{ bet.result1Description }}</div>
-    <div><strong>Result 2 Description:</strong> {{ bet.result2Description }}</div>
+  <div *ngIf="isLoggedIn" class="mt-4">
+    <div *ngFor="let bet of bets" class="p-4 border rounded bg-white">
+      <div><strong>Title:</strong> {{ bet.title }}</div>
+      <div><strong>Odds:</strong> {{ bet.odds }}</div>
+      <div><strong>Side:</strong> {{ bet.side }}</div>
+      <div><strong>Result 1 Description:</strong> {{ bet.result1Description }}</div>
+      <div><strong>Result 2 Description:</strong> {{ bet.result2Description }}</div>
+    </div>
   </div>
 </div>
