@@ -19,7 +19,7 @@ export class RegisterComponent {
   LastName: string = '';
   PhoneNumber: string = '';
   UserName: string = '';
-  ErrorMessage: string = ''; // Initialize to an empty string
+  ErrorMessage: string = ''; 
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -40,28 +40,26 @@ export class RegisterComponent {
       .subscribe(
         response => {
           console.log('Registration successful', response);
-          this.router.navigate(['/sportbet']); // Rediriger vers la page d'accueil
+          this.router.navigate(['/sportbet']); 
         },
         error => {
           console.error('Registration failed', error);
-          this.handleRegistrationError(error); // Call new error handling function
+          this.handleRegistrationError(error);
         }
       );
   }
 
   private handleRegistrationError(error: any) {
-    // Check for expected error format (application/problem+json)
     if (error.error && error.error.errors) {
-      // Extract specific error messages for each field
-      this.ErrorMessage = ''; // Clear any existing error message
+
+      this.ErrorMessage = ''; 
       const errors = error.error.errors;
       for (const field in errors) {
         errors[field].forEach((message: any) => {
-          this.ErrorMessage += `- ${message}\n`; // Build a formatted error message
+          this.ErrorMessage += `- ${message}\n`; 
         });
       }
     } else {
-      // Handle unexpected error format or network issues
       this.ErrorMessage = 'An error occurred during registration. Please try again.';
     }
   }

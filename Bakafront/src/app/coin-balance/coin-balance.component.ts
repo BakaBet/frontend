@@ -16,29 +16,34 @@ export class CoinBalanceComponent implements OnInit, OnDestroy {
   coins: number = 0;
   errorMessage: string = '';
   private authSubscription: Subscription;
+  private balanceSubscription: Subscription;
 
   constructor(private coinBalanceService: CoinBalanceService, private authService: AuthService) {
     this.authSubscription = new Subscription();
-}
-
+    this.balanceSubscription = new Subscription();
+  }
 
   ngOnInit() {
     this.loadBalance();
-    // Subscribe to login/logout events
     this.authSubscription = this.authService.isLoggedIn$.subscribe((loggedIn) => {
       if (!loggedIn) {
-        // Clear coins when user logs out
         this.coins = 0;
       } else {
-        this.loadBalance(); // Load balance again if user logs in
+        this.loadBalance(); 
       }
+    });
+
+    this.balanceSubscription = this.coinBalanceService.onBalanceUpdated().subscribe(() => {
+      this.loadBalance();
     });
   }
 
   ngOnDestroy() {
-    // Unsubscribe to prevent memory leaks
     if (this.authSubscription) {
       this.authSubscription.unsubscribe();
+    }
+    if (this.balanceSubscription) {
+      this.balanceSubscription.unsubscribe();
     }
   }
 

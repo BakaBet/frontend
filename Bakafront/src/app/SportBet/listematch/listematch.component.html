@@ -41,20 +41,24 @@
         </div>
 
         <div class="text-center my-6">
+<<<<<<< HEAD
           <div class="font-bold text-black mb-4 text-lg commence-time">{{ match.commenceTime }}</div>
           <input type="number" class="text-black w-full py-3 rounded text-center" placeholder="Montant à parier">
+=======
+          <div class="font-bold text-black mb-4 text-lg">{{ match.commenceTime }}</div>
+          <input type="number" class="text-black w-full py-3 rounded text-center" placeholder="Montant à parier" [(ngModel)]="match.inputAmount">
+>>>>>>> a07eaaa38b058781330be2321b1dcb8806d7c710
         </div>
 
         <div class="flex justify-center items-center space-x-6">
           <button [style.backgroundColor]="match.homeOutcome === 0 ? '#ccc' : 'bg-gray-700'"
           [style.cursor]="match.homeOutcome === 0 ? 'not-allowed' : 'pointer'"
-          class="bg-gray-700 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300">Home Win</button>
+          class="bg-gray-700 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300"
+          (click)="onHomeWinClick(match)">Home Win</button>
           <button [style.backgroundColor]="match.awayOutcome === 0 ? '#ccc' : 'bg-gray-700'"
           [style.cursor]="match.awayOutcome === 0 ? 'not-allowed' : 'pointer'"
-          class="bg-gray-700 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300">Draw</button>
-          <button [style.backgroundColor]="match.awayOutcome === 0 ? '#ccc' : 'bg-gray-700'"
-          [style.cursor]="match.awayOutcome === 0 ? 'not-allowed' : 'pointer'"
-          class="bg-gray-700 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300">Away Win</button>
+          class="bg-gray-700 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300"
+          (click)="onAwayWinClick(match)">Away Win</button>
         </div>
 
         <div class="mt-6">
@@ -67,7 +71,6 @@
               <li>Match ID: {{ match.id }}</li>
               <li class="sport-title">Sport: {{ match.sportTitle }}</li>
               <li>Date de début: {{ match.commenceTime }}</li>
-              <li>Résultats :</li>
             </ul>
           </div>
         </div>
