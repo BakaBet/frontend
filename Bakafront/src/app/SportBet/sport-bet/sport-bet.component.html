@@ -1,2 +1,6 @@
-<app-listecurrentbetuser></app-listecurrentbetuser>
-<app-listematch></app-listematch>
+<div class="flex justify-center items-center my-10" *ngIf="!isLoggedIn">
+    <H2 class="text-lg font-bold">Veuillez vous connecter pour acceder a cette page</H2>
+</div>
+
+<app-listecurrentbetuser *ngIf="isLoggedIn"></app-listecurrentbetuser>
+<app-listematch *ngIf="isLoggedIn"></app-listematch>

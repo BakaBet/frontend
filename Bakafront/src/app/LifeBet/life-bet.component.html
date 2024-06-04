@@ -1,4 +1,9 @@
-<div class="flex items-center justify-center min-h-screen">
+<div class="flex justify-center items-center my-10" *ngIf="!isLoggedIn">
+  <H2 class="text-lg font-bold">Veuillez vous connecter pour acceder a cette page</H2>
+</div>
+
+
+<div *ngIf="isLoggedIn" class="flex items-center justify-center min-h-screen">
   <div class="w-full max-w-3xl bg-gray-100 p-8 rounded-lg shadow-md flex">
     <div class="flex flex-col mr-12">
       <h2 class="text-3xl font-bold mb-4 text-center mt-4">PARIS SUR DES ÉVÉNEMENTS DE LA VIE</h2>
@@ -88,7 +93,7 @@
   </div>
 </div>
 
-<div class="mt-4">
+<div *ngIf="isLoggedIn" class="mt-4">
   <div *ngIf="isLoggedIn" class="mt-4">
     <div *ngFor="let bet of bets" class="p-4 border rounded bg-white">
       <div><strong>Title:</strong> {{ bet.title }}</div>

@@ -46,12 +46,12 @@
         </div>
 
         <div class="flex justify-center items-center space-x-6">
-          <button [style.backgroundColor]="match.homeOutcome === 0 ? '#ccc' : 'bg-gray-700'"
-          [style.cursor]="match.homeOutcome === 0 ? 'not-allowed' : 'pointer'"
+          <button [style.backgroundColor]="match.homeOutcome === null ? '#ccc' : 'bg-gray-700'"
+          [style.cursor]="match.homeOutcome === null ? 'not-allowed' : 'pointer'"
           class="bg-gray-700 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300"
           (click)="onHomeWinClick(match)">Home Win</button>
-          <button [style.backgroundColor]="match.awayOutcome === 0 ? '#ccc' : 'bg-gray-700'"
-          [style.cursor]="match.awayOutcome === 0 ? 'not-allowed' : 'pointer'"
+          <button [style.backgroundColor]="match.awayOutcome === null ? '#ccc' : 'bg-gray-700'"
+          [style.cursor]="match.awayOutcome === null ? 'not-allowed' : 'pointer'"
           class="bg-gray-700 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300"
           (click)="onAwayWinClick(match)">Away Win</button>
         </div>

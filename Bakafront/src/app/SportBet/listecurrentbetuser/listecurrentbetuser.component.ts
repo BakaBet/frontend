@@ -3,6 +3,7 @@ import { SportmatchService, UserBet } from '../../Service/sportmatch.service'
 import { MatchProduct } from '../../model/MatchProduct';
 import { CommonModule } from '@angular/common';
 import { forkJoin } from 'rxjs';
+import { AuthService } from '../../Service/auth.service';
 
 @Component({
   selector: 'app-listecurrentbetuser',
@@ -17,15 +18,16 @@ export class ListecurrentbetuserComponent implements OnInit {
   userBets: UserBet[] = [];
   matches: { [key: string]: MatchProduct } = {}; 
   isBetsHidden = false;
-  selectedFilter: string = 'all'; // Par défaut, afficher tous les paris
+  selectedFilter: string = 'all';
 
-  constructor(private matchService: SportmatchService) { }
+  constructor(private matchService: SportmatchService, private authService: AuthService) { }
 
   ngOnInit() {
     this.loadBets();
     this.matchService.onBetsUpdated().subscribe(() => {
       this.loadBets();
     });
+    
   }
 
   loadBets(): void {

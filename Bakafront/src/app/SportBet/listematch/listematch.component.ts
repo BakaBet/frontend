@@ -21,6 +21,7 @@ export class ListematchComponent implements OnInit {
   searchDate: string = '';
   filteredMatches: MatchProductWithCote[] = [];
   amountInput: number = 0;
+
   
   constructor(private matchService: SportmatchService, private authService : AuthService, private coinBalanceService : CoinBalanceService) { }
 
