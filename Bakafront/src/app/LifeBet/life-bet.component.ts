@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../Service/auth.service';
 
 @Component({
   selector: 'app-life-bet',
@@ -9,32 +10,43 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './life-bet.component.html',
   styleUrls: ['./life-bet.component.css']
 })
-export class LifeBetComponent {
-  // Initialisation de toutes les propriétés nécessaires pour le pari
+export class LifeBetComponent implements OnInit {
+  isLoggedIn = false;  
+
   bet = {
     title: '',
     odds: '',
     side: '',
     result1: '',
     result2: '',
-    startingBetAmount: 0,  // La mise de départ pour le pari
-    allowNegotiation: false,  // Permettre la négociation des cotes
-    allowJoining: false,  // Permettre à d'autres de rejoindre le pari
-    result1Description: '',  // Description pour le résultat 1
-    result2Description: ''  // Description pour le résultat 2
+    startingBetAmount: 0,
+    allowNegotiation: false,
+    allowJoining: false,
+    result1Description: '',
+    result2Description: ''
   };
 
-  bets: any[] = [];  // Tableau pour stocker les paris créés
+  bets: any[] = [];
+
+  constructor(private authService: AuthService) {}  
+
+  ngOnInit() {
+    this.authService.isLoggedIn$.subscribe(isLoggedIn => {
+      this.isLoggedIn = isLoggedIn;
+    });
+  }
 
   createBet() {
-    // Ajoute une copie de l'objet bet actuel au tableau bets
+    if (!this.isLoggedIn) {
+      alert('Vous devez être connecté pour créer un pari.');
+      return;
+    }
     this.bets.push({ ...this.bet });
-    console.log(this.bets);  // Affiche la liste des paris pour le débogage
-    this.resetBet();  // Réinitialise le formulaire après la création d'un pari
+    console.log(this.bets);
+    this.resetBet();
   }
 
   resetBet() {
-    // Réinitialise toutes les propriétés de l'objet bet
     this.bet = {
       title: '',
       odds: '',
