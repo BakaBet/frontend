@@ -22,12 +22,10 @@ export class SigninComponent {
   login() {
     this.authService.login(this.userName, this.password, this.rememberMe).subscribe(
       response => {
-        // Handle successful response
         console.log('Login successful', response);
         this.router.navigate(['/sportbet']); 
       },
       error => {
-        // Handle error response
         console.error('Login failed', error);
         this.errorMessage = 'Login failed. Please check your credentials.';
       }

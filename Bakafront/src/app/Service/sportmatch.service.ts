@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.service';
-import { Observable, BehaviorSubject, switchMap, map, catchError } from 'rxjs';
+import { Observable, BehaviorSubject, switchMap, map, catchError, tap, Subject } from 'rxjs';
 import { MatchProduct } from '../model/MatchProduct';
 import { environment } from '../environments/environments';
 
@@ -10,7 +10,9 @@ import { environment } from '../environments/environments';
 })
 export class SportmatchService {
   private apiUrl = 'https://localhost:7023/api/Events/sports';
-
+  private apiUrlBet = 'https://localhost:7023/api/Bet';
+  private betsUpdated = new Subject<void>();
+  
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   private formatDate(dateStr: string): string {
@@ -36,6 +38,26 @@ export class SportmatchService {
         throw error;
       })
     );
+  }
+
+  postBet(dataBet: {
+    userId: string | null;
+    eventId: string;
+    amount: number;
+    team: string;
+  }): Observable<any> {
+    return this.http.post<any>(this.apiUrlBet, dataBet)
+      .pipe(
+        tap(response => {
+          if (response) {
+            this.betsUpdated.next()
+          }
+        })
+      );
+  }
+
+  onBetsUpdated(): Observable<void> {
+    return this.betsUpdated.asObservable(); // Expose the Subject as Observable
   }
 
   getSportBetUser(): Observable<UserBet[]> {

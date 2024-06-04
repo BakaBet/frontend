@@ -15,13 +15,19 @@ import { forkJoin } from 'rxjs';
 export class ListecurrentbetuserComponent implements OnInit {
 
   userBets: UserBet[] = [];
-  matches: { [key: string]: MatchProduct } = {}; // Store matches by eventId
-  isBetsHidden = false; // Flag to track visibility
+  matches: { [key: string]: MatchProduct } = {}; 
+  isBetsHidden = false; 
 
   constructor(private matchService: SportmatchService) { }
 
   ngOnInit() {
-    const userId = 'user-id-example'; // Replace this with actual user ID logic
+    this.loadBets();
+    this.matchService.onBetsUpdated().subscribe(() => {
+      this.loadBets();
+    });
+  }
+
+  loadBets(): void {
     this.matchService.getSportBetUser().subscribe(bets => {
       this.userBets = bets;
       const matchRequests = bets.map(bet => this.matchService.getMatch(bet.eventId));
