@@ -38,8 +38,6 @@ export class SportmatchService {
     );
   }
 
-  
-
   getSportBetUser(): Observable<UserBet[]> {
     const url = `https://localhost:7023/api/Bet/${this.authService.getUserId()}`;
     return this.http.get<UserBet[]>(url).pipe(
@@ -49,6 +47,20 @@ export class SportmatchService {
       }))),
       catchError(error => {
         console.error('Error fetching user sport bets:', error);
+        throw error;
+      })
+    );
+  }
+
+  getMatch(eventId: string): Observable<MatchProduct> {
+    const url = `${this.apiUrl}/${eventId}`;
+    return this.http.get<MatchProduct>(url).pipe(
+      map(match => ({
+        ...match,
+        commenceTime: this.formatDate(match.commenceTime)
+      })),
+      catchError(error => {
+        console.error('Error fetching match:', error);
         throw error;
       })
     );

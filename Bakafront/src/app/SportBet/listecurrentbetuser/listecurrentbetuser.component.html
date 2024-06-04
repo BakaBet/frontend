@@ -1,7 +1,7 @@
 <div class="flex justify-center items-center my-10">
-  <div class="w-3/4">  
+  <div class="w-3/4">
     <h2 class="my-10">
-      <span class="text-center text-xl font-bold mb-6">Vos paris</span>  
+      <span class="text-center text-xl font-bold mb-6">Vos paris</span>
       <button (click)="toggleBetsVisibility()" class="mx-20 bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full">
         {{ isBetsHidden ? 'Afficher les paris' : 'Cacher les paris' }}
       </button>
@@ -9,11 +9,19 @@
     <div *ngIf="userBets.length > 0">
       <div *ngIf="!isBetsHidden">
         <ng-container *ngFor="let bet of userBets">
-          <div class="bg-gray-200 p-6 rounded-lg mb-6 w-full">
+          <div class="bg-gray-200 p-6 rounded-lg mb-6 w-full" *ngIf="matches[bet.eventId]">
             <div class="flex justify-between">
+              <div class="flex items-center space-x-6">
+                <i class="fa fa-bolt mr-4 text-6xl text-gray-500"></i>
+                <div>
+                  <div class="font-bold text-xl">{{ matches[bet.eventId].homeTeam }}</div>
+                  <div>VS</div>
+                  <div class="font-bold text-xl">{{ matches[bet.eventId].awayTeam }}</div>
+                </div>
+              </div>
               <div class="text-center">
-                <div class="font-bold text-black mb-4 text-lg">{{ bet.datePlaced }}</div>
-                <div class="flex justify-center">  
+                <div class="font-bold text-black mb-4 text-lg">{{ matches[bet.eventId].commenceTime }}</div>
+                <div class="flex justify-center">
                   <div class="flex flex-col items-center">
                     <div>Mise: {{ bet.amount }}</div>
                     <div>Cote : {{ bet.odd }}</div>
